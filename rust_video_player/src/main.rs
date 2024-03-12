@@ -40,13 +40,13 @@ fn main() {
     ) -> Texture<'a> {
         use std::path::Path;
 
-        // Lade das Video als Surface
+        // Load the Video as Surface
         let surface = match Surface::load_bmp(Path::new(file_path)) {
             Ok(s) => s,
             Err(e) => panic!("Fehler beim Laden des Videos: {}", e),
         };
 
-        // Konvertiere die Surface in eine Textur
+        // convert surface into texture
         match texture_creator.create_texture_from_surface(&surface) {
             Ok(texture) => texture,
             Err(e) => panic!("Fehler beim Erstellen der Textur: {}", e),
@@ -59,7 +59,7 @@ fn main() {
 
     'run: loop {
 
-        // Eventbehandlung
+        // eventhandling
         'running: for event in event_pump.poll_iter() {
             match event {
                 Event::Quit { .. }
@@ -73,13 +73,13 @@ fn main() {
         // Clear Canvas
         canvas.clear();
 
-        // Rendern der Video-Textur
+        // rendering the canvas
         canvas.copy(&texture, None, Some(Rect::new(0, 0, 800, 600))).unwrap();
 
-        // Aktualisieren der Anzeige
+        // reload the interface
         canvas.present();
 
-        // Warten für die nächste Bildwiederholung
+        // wait for next video picture
         std::thread::sleep(Duration::new(0, 1_000_000_000 / 60));
     }
 

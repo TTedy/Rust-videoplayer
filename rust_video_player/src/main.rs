@@ -19,7 +19,7 @@ fn main() {
     let video;
 
 
-    //heyy
+    //hello Teddy
 
     //Creating tha Window
     let window = video_subsystem.window("Video player", 800, 600)

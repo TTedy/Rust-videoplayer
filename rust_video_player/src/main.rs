@@ -16,10 +16,7 @@ fn main() {
     let video_subsystem = sdl_context.video().unwrap();
     let mut event_pump = sdl_context.event_pump().unwrap();
 
-    let video;
 
-
-    //hello Teddy
 
     //Creating tha Window
     let window = video_subsystem.window("Video player", 800, 600)
@@ -30,8 +27,6 @@ fn main() {
     // Create Render-Canvas
     let mut canvas = window.into_canvas().build().unwrap();
     let texture_creator: TextureCreator<_> = canvas.texture_creator();
-
-    let mut event_pump = sdl_context.event_pump().unwrap();
 
 
     fn load_video<'a>(
@@ -53,7 +48,7 @@ fn main() {
         }
     }
 
-    let mut texture = load_video(&texture_creator, "/users/teric.marko/Desktop/");
+    let mut texture = load_video(&texture_creator, "/users/teric.marko/Documents/testvid.bmp");
 
 
 
@@ -68,21 +63,28 @@ fn main() {
                 }
                 _ => {}
             }
+
+            // Clear Canvas
+            canvas.clear();
+
+            // rendering the canvas
+            canvas.copy(&texture, None, Some(Rect::new(0, 0, 800, 600))).unwrap();
+
+            // reload the interface
+            canvas.present();
+
+            // wait for next video picture
+            std::thread::sleep(Duration::new(0, 1_000_000_000 / 60));
         }
 
-        // Clear Canvas
+
+    }
+        // Clear canvas
+        canvas.set_draw_color(sdl2::pixels::Color::RGB(0, 0, 0));
         canvas.clear();
 
-        // rendering the canvas
-        canvas.copy(&texture, None, Some(Rect::new(0, 0, 800, 600))).unwrap();
-
-        // reload the interface
+        // Render canvas
         canvas.present();
-
-        // wait for next video picture
-        std::thread::sleep(Duration::new(0, 1_000_000_000 / 60));
-    }
-
 
 
     // Main loop
@@ -98,11 +100,5 @@ fn main() {
     //         }
     //     }
 
-        // Clear canvas
-        canvas.set_draw_color(sdl2::pixels::Color::RGB(0, 0, 0));
-        canvas.clear();
 
-        // Render canvas
-        canvas.present();
-    }
-
+}

@@ -1,104 +1,38 @@
-extern crate sdl2;
+use std::fs::File;
+use std::io::{BufReader};
+use mp4::{Result};
 
-use sdl2::pixels::PixelFormatEnum;
-use sdl2::event::Event;
-use sdl2::keyboard::Keycode;
-use sdl2::render::{Texture, TextureCreator};
-use sdl2::surface::Surface;
-use sdl2::video::WindowContext;
-use std::path::Path;
-use std::time::Duration;
-use sdl2::rect::Rect;
+fn main() -> Result<()> {
+    let f = File::open("Rust-videoplayer/Rust_video_player/tests/samples/minimal.mp4").unwrap();
+    let size = f.metadata()?.len();
+    let reader = BufReader::new(f);
 
-fn main() {
-    // Initialize SDL2
-    let sdl_context = sdl2::init().unwrap();
-    let video_subsystem = sdl_context.video().unwrap();
-    let mut event_pump = sdl_context.event_pump().unwrap();
+    let mp4 = mp4::Mp4Reader::read_header(reader, size)?;
 
+    // Print boxes.
+    println!("major brand: {}", mp4.ftyp.major_brand);
+    println!("timescale: {}", mp4.moov.mvhd.timescale);
 
+    // Use available methods.
+    println!("size: {}", mp4.size());
 
-    //Creating tha Window
-    let window = video_subsystem.window("Video player", 800, 600)
-        .position_centered()
-        .build()
-        .unwrap();
-
-    // Create Render-Canvas
-    let mut canvas = window.into_canvas().build().unwrap();
-    let texture_creator: TextureCreator<_> = canvas.texture_creator();
-
-
-    fn load_video<'a>(
-        texture_creator: &'a TextureCreator<WindowContext>,
-        file_path: &str,
-    ) -> Texture<'a> {
-        use std::path::Path;
-
-        // Load the Video as Surface
-        let surface = match Surface::load_bmp(Path::new(file_path)) {
-            Ok(s) => s,
-            Err(e) => panic!("Fehler beim Laden des Videos: {}", e),
-        };
-
-        // convert surface into texture
-        match texture_creator.create_texture_from_surface(&surface) {
-            Ok(texture) => texture,
-            Err(e) => panic!("Fehler beim Erstellen der Textur: {}", e),
-        }
+    let mut compatible_brands = String::new();
+    for brand in mp4.compatible_brands().iter() {
+        compatible_brands.push_str(&brand.to_string());
+        compatible_brands.push_str(",");
     }
+    println!("compatible brands: {}", compatible_brands);
+    println!("duration: {:?}", mp4.duration());
 
-    let mut texture = load_video(&texture_creator, "/users/teric.marko/Documents/testvid.bmp");
-
-
-
-    'run: loop {
-
-        // eventhandling
-        'running: for event in event_pump.poll_iter() {
-            match event {
-                Event::Quit { .. }
-                | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
-                    break 'running;
-                }
-                _ => {}
-            }
-
-            // Clear Canvas
-            canvas.clear();
-
-            // rendering the canvas
-            canvas.copy(&texture, None, Some(Rect::new(0, 0, 800, 600))).unwrap();
-
-            // reload the interface
-            canvas.present();
-
-            // wait for next video picture
-            std::thread::sleep(Duration::new(0, 1_000_000_000 / 60));
-        }
-
-
+    // Track info.
+    for track in mp4.tracks().values() {
+        println!(
+            "track: #{}({}) {} : {}",
+            track.track_id(),
+            track.language(),
+            track.track_type()?,
+            track.box_type()?,
+        );
     }
-        // Clear canvas
-        canvas.set_draw_color(sdl2::pixels::Color::RGB(0, 0, 0));
-        canvas.clear();
-
-        // Render canvas
-        canvas.present();
-
-
-    // Main loop
-    // 'mainloop: loop {
-    //     for event in event_pump.poll_iter() {
-    //         match event {
-    //             Event::Quit { .. }
-    //             | Event::KeyDown {
-    //                 keycode: Some(Keycode::Escape),
-    //                 ..
-    //             } => break 'mainloop,
-    //             _ => {}
-    //         }
-    //     }
-
-
+    Ok(())
 }

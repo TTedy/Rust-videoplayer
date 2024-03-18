@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 mp4 = "0.14.0"
-
+gstreamer = "0.21.3"
+gstreamer-player = "0.20.5"

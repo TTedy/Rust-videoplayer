@@ -3,7 +3,8 @@ use std::io::{BufReader};
 use mp4::{Result};
 
 fn main() -> Result<()> {
-    let f = File::open("Rust-videoplayer/Rust_video_player/tests/samples/minimal.mp4").unwrap();
+    
+    let f = File::open("tests/samples/minimal.mp4").unwrap();
     let size = f.metadata()?.len();
     let reader = BufReader::new(f);
 

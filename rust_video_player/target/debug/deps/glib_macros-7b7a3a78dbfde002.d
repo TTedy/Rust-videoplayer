@@ -1,0 +1,9 @@
+C:\Users\breki\.cargo\projects\Rust-vp\Rust-videoplayer\Rust_video_player\target\debug\deps\glib_macros-7b7a3a78dbfde002.dll: C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\lib.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\gboxed_derive.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\genum_derive.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\gflags_attribute.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\utils.rs
+
+C:\Users\breki\.cargo\projects\Rust-vp\Rust-videoplayer\Rust_video_player\target\debug\deps\glib_macros-7b7a3a78dbfde002.d: C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\lib.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\gboxed_derive.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\genum_derive.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\gflags_attribute.rs C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\utils.rs
+
+C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\lib.rs:
+C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\gboxed_derive.rs:
+C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\genum_derive.rs:
+C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\gflags_attribute.rs:
+C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\glib-macros-0.10.1\src\utils.rs:

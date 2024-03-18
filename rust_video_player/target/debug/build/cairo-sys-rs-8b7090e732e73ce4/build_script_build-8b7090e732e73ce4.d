@@ -1,0 +1,5 @@
+C:\Users\breki\.cargo\projects\Rust-vp\Rust-videoplayer\Rust_video_player\target\debug\build\cairo-sys-rs-8b7090e732e73ce4\build_script_build-8b7090e732e73ce4.exe: C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cairo-sys-rs-0.18.2\build.rs
+
+C:\Users\breki\.cargo\projects\Rust-vp\Rust-videoplayer\Rust_video_player\target\debug\build\cairo-sys-rs-8b7090e732e73ce4\build_script_build-8b7090e732e73ce4.d: C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cairo-sys-rs-0.18.2\build.rs
+
+C:\Users\breki\.cargo\registry\src\index.crates.io-6f17d22bba15001f\cairo-sys-rs-0.18.2\build.rs:
